@@ -1,228 +1,226 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="GNF's first website - Computer Science Education student at TASUED">
-  <title>GNF - My First Site</title>
-  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/5968/5968381.png">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-  
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      line-height: 1.6;
-    }
-
-    nav {
-      position: sticky;
-      top: 0;
-      background: rgba(0,0,0,0.3);
-      backdrop-filter: blur(10px);
-      padding: 15px;
-      text-align: center;
-      z-index: 100;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 20px;
-      font-weight: 600;
-      transition: opacity 0.3s;
-    }
-
-    nav a:hover {
-      opacity: 0.7;
-    }
-
-    header {
-      text-align: center;
-      padding: 60px 20px;
-      background: rgba(0,0,0,0.2);
-    }
-
-    header h1 {
-      font-size: 48px;
-      margin-bottom: 10px;
-      font-weight: 700;
-    }
-
-    header p {
-      font-size: 20px;
-      opacity: 0.9;
-      font-weight: 400;
-    }
-
-    section {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-
-    .card {
-      background: rgba(255,255,255,0.1);
-      padding: 30px;
-      border-radius: 12px;
-      margin-bottom: 30px;
-      backdrop-filter: blur(10px);
-    }
-
-    h2 {
-      margin-bottom: 15px;
-      font-size: 32px;
-      font-weight: 600;
-    }
-
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 15px;
-      margin-top: 20px;
-    }
-
-    .gallery img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 10px;
-      transition: transform 0.3s;
-    }
-
-    .gallery img:hover {
-      transform: scale(1.05);
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 12px 30px;
-      background: white;
-      color: #764ba2;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: 600;
-      margin-top: 15px;
-      transition: all 0.3s;
-      border: none;
-      cursor: pointer;
-      font-size: 16px;
-    }
-
-    .btn:hover {
-      background: #764ba2;
-      color: white;
-      border: 2px solid white;
-    }
-
-    /* Login form styles */
-    .login-form {
-      max-width: 400px;
-      margin: 20px auto 0;
-    }
-
-    .login-form input {
-      width: 100%;
-      padding: 12px 15px;
-      margin-bottom: 15px;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      font-family: 'Poppins', sans-serif;
-      background: rgba(255,255,255,0.9);
-      color: #333;
-    }
-
-    .login-form input:focus {
-      outline: none;
-      box-shadow: 0 0 0 2px #764ba2;
-    }
-
-    .login-form label {
-      display: block;
-      margin-bottom: 5px;
-      font-weight: 600;
-      font-size: 14px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px;
-      opacity: 0.8;
-      font-size: 14px;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GNF - Login</title>
+<style>
+    * { box-sizing: border-box; font-family: system-ui, Arial, sans-serif; }
+  body { 
+    background: #0f172a; 
+    color: #e2e8f0; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    min-height: 100vh; 
+    margin: 0;
+  }
+  .card {
+    background: #1e293b;
+    padding: 2rem;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 380px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  }
+  h2 { margin: 0 0 1.5rem 0; text-align: center; }
+  input {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    background: #0f172a;
+    color: #e2e8f0;
+    font-size: 15px;
+  }
+  button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 12px;
+    border: none;
+    border-radius: 8px;
+    background: #3b82f6;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  button:hover { background: #2563eb; }
+  .toggle {
+    text-align: center;
+    margin-top: 1rem;
+    color: #94a3b8;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  .toggle:hover { color: #e2e8f0; }
+  .error { color: #f87171; font-size: 14px; margin-top: 10px; text-align: center; }
+  .success { color: #4ade80; font-size: 14px; margin-top: 10px; text-align: center; }
+</style>
 </head>
 <body>
+  <div class="card">
+    <h2 id="form-title">Login</h2>
+    <input type="email" id="email" placeholder="Email" required>
+    <input type="password" id="password" placeholder="Password" required>
+    <button id="submit-btn">Login</button>
+    <div class="toggle" id="toggle-mode">Don't have an account? Sign up</div>
+    <div id="message"></div>
+  </div>
 
-  <nav>
-    <a href="#about">About</a>
-    <a href="#photos">Photos</a>
-    <a href="#login">Login</a>
-    <a href="#contact">Contact</a>
-  </nav>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { 
+  getAuth, 
+  signInWithEmailAndPassword, 
+  createUserWithEmailAndPassword,
+  sendEmailVerification 
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
-  <header>
-    <h1>Hey, I'm GNF 👋</h1>
-    <p>Computer Science Education Student</p>
-  </header>
+const firebaseConfig = {
+  apiKey: "AIzaSyAk2qhOydgf_Aqzg0Zw4Cg_8f3280eCEBs",
+  authDomain: "gnf-site.firebaseapp.com",
+  projectId: "gnf-site",
+  storageBucket: "gnf-site.firebasestorage.app",
+  messagingSenderId: "433011079570",
+  appId: "1:433011079570:web:79981578237f0562e5294b",
+  measurementId: "G-W431C4HMND"
+};
 
-  <section>
-    <div class="card" id="about">
-      <h2>About Me</h2>
-      <p>
-        Hey I'm GNF, a student at Tai Solarin Federal University of Education, Ijebu Ode, Nigeria. 
-        I'm studying Computer Science Education. 
-        <br><br>
-        <strong>Matric Number:</strong> 20230204545
-      </p>
-    </div>
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 
-    <div class="card" id="photos">
-      <h2>My Photos</h2>
-      <p>Some pics I uploaded to show you around</p>
-      <div class="gallery">
-        <img src="photo1.jpg.jpeg" alt="My photo 1">
-        <img src="photo2.jpg.jpeg" alt="My photo 2">
-        <img src="photo3.jpg.jpeg" alt="My photo 3">
-      </div>
-    </div>
+let isLogin = true;
+const title = document.getElementById('form-title');
+const btn = document.getElementById('submit-btn');
+const toggle = document.getElementById('toggle-mode');
+const msg = document.getElementById('message');
 
-    <div class="card" id="login">
-      <h2>Login</h2>
-      <p>This is a demo login form. It doesn't actually log you in yet.</p>
-      <form class="login-form" onsubmit="alert('This is a demo form. Login not connected yet!'); return false;">
-        <label for="username">Username</label>
-        <input type="text" id="username" placeholder="Enter your username" required>
-        
-        <label for="password">Password</label>
-        <input type="password" id="password" placeholder="Enter your password" required>
-        
-        <button type="submit" class="btn">Login</button>
-      </form>
-    </div>
+toggle.onclick = () => {
+  isLogin = !isLogin;
+  title.textContent = isLogin ? 'Login' : 'Sign Up';
+  btn.textContent = isLogin ? 'Login' : 'Sign Up';
+  toggle.textContent = isLogin 
+    ? "Don't have an account? Sign up" 
+    : "Already have an account? Login";
+  msg.textContent = '';
+};
 
-    <div class="card" id="contact">
-      <h2>Let's Connect</h2>
-      <p>Want to log in? Click below to go to the login form.</p>
-      <a href="#login" class="btn">Go to Login</a>
-    </div>
-  </section>
+btn.onclick = async () => {
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+  msg.textContent = '';
+  msg.className = '';
 
-  <footer>
-    Made with ❤️ in 2026 | GNF
-  </footer>
+  try {
+    if (isLogin) {
+      const userCred = await signInWithEmailAndPassword(auth, email, password);
+      if (!userCred.user.emailVerified) {
+        msg.textContent = 'Please verify your email first. Check your inbox.';
+        msg.className = 'error';
+        return;
+      }
+      window.location.href = 'dashboard.html';
+    } else {
+      const userCred = await createUserWithEmailAndPassword(auth, email, password);
+      await sendEmailVerification(userCred.user);
+      msg.textContent = 'Account created! Check your email to verify.';
+      msg.className = 'success';
+    }
+  } catch (error) {
+    msg.textContent = error.message;
+    msg.className = 'error';
+  }
+};
+</script>
+</body>
+</html>
 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GNF - Dashboard</title>
+<style>
+  body {
+    background: #0f172a;
+    color: #e2e8f0;
+    font-family: system-ui, Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+  }
+  .card {
+    background: #1e293b;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    max-width: 500px;
+  }
+  button {
+    padding: 12px 24px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 8px;
+    background: #ef4444;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  button:hover { background: #dc2626; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <h1>Welcome!</h1>
+    <p id="user-email">Loading...</p>
+    <p>You're logged in to GNF Site.</p>
+    <button id="logout-btn">Logout</button>
+  </div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { 
+  getAuth, 
+  onAuthStateChanged, 
+  signOut 
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAk2qhOydgf_Aqzg0Zw4Cg_8f3280eCEBs",
+  authDomain: "gnf-site.firebaseapp.com",
+  projectId: "gnf-site",
+  storageBucket: "gnf-site.firebasestorage.app",
+  messagingSenderId: "433011079570",
+  appId: "1:433011079570:web:79981578237f0562e5294b",
+  measurementId: "G-W431C4HMND"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    if (!user.emailVerified) {
+      window.location.href = 'index.html';
+      return;
+    }
+    document.getElementById('user-email').textContent = user.email;
+  } else {
+    window.location.href = 'index.html';
+  }
+});
+
+document.getElementById('logout-btn').onclick = async () => {
+  await signOut(auth);
+  window.location.href = 'index.html';
+};
+</script>
 </body>
 </html>
