@@ -3,127 +3,77 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="GNF - Computer Science Education student at TASUED">
-<title>GNF - Profile</title>
+<title>GNF - Login</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
     * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
   body {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
-    line-height: 1.7;
-  }
-  nav {
-    position: sticky;
-    top: 0;
-    background: rgba(0,0,0,0.3);
-    backdrop-filter: blur(10px);
-    padding: 15px 20px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    z-index: 100;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
   }
-  nav h3 { font-weight:600; }
-  nav button {
-    padding: 8px 20px;
+  .card {
+    background: rgba(255,255,255,0.1);
+    padding: 40px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 400px;
+    backdrop-filter: blur(10px);
+  }
+  h1 { text-align:center; margin-bottom:10px; font-size:32px; }
+  p { text-align:center; opacity:0.9; margin-bottom:25px; }
+  input {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    background: rgba(255,255,255,0.9);
+    color: #333;
+  }
+  button {
+    width: 100%;
+    padding: 12px;
     background: white;
     color: #764ba2;
     border: none;
     border-radius: 8px;
     font-weight: 600;
+    font-size: 16px;
     cursor: pointer;
+    margin-top: 10px;
   }
-  nav button:hover { background: #764ba2; color: white; border: 1px solid white; }
-  
-  header {
-    text-align: center;
-    padding: 60px 20px;
-    background: rgba(0,0,0,0.2);
-  }
-  header h1 { font-size:48px; margin-bottom:10px; }
-  
-  section { max-width:900px; margin:40px auto; padding:0 20px; }
-  .card {
-    background: rgba(255,255,255,0.1);
-    padding: 35px;
-    border-radius: 12px;
-    margin-bottom: 30px;
-    backdrop-filter: blur(10px);
-  }
-  h2 { margin-bottom:20px; font-size:32px; }
-  .bio { font-size:16px; line-height:1.8; }
-  .bio strong { color:#ffd700; }
-  
-  .gallery {
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:20px;
-    margin-top:25px;
-  }
-  .gallery img {
-    width:100%;
-    height:250px;
-    object-fit:cover;
-    border-radius:12px;
-    border:2px solid rgba(255,255,255,0.2);
-    transition:transform 0.3s;
-  }
-  .gallery img:hover { transform:scale(1.05); }
-  
-  footer { text-align:center; padding:30px; opacity:0.8; font-size:14px; }
+  button:hover { background: #764ba2; color: white; border: 2px solid white; }
+  .toggle { text-align:center; margin-top:15px; cursor:pointer; opacity:0.9; }
+  .msg { text-align:center; margin-top:15px; font-size:14px; }
+  .error { color:#ff6b6b; }
+  .success { color:#51cf66; }
 </style>
 </head>
 <body>
-
-<nav>
-  <h3>Welcome, <span id="user-email"></span></h3>
-  <button id="logout-btn">Logout</button>
-</nav>
-
-<header>
-  <h1>Hey, I'm GNF 👋</h1>
-  <p>300 Level Computer Science Education Student</p>
-</header>
-
-<section>
   <div class="card">
-    <h2>About Me</h2>
-    <div class="bio">
-      <p>
-        I'm a 300 level student at <strong>Tai Solarin University of Education, Ijebu Ode, Nigeria</strong>, 
-        studying <strong>Computer Science Education</strong>. I'm passionate about tech, teaching, and using 
-        code to solve real problems in education.
-        <br><br>
-        Right now, I'm focused on learning web development, data structures, and how to make learning more 
-        interactive through technology. My goal is to become a skilled software developer and educator who 
-        can bridge the gap between tech and the classroom in Nigeria.
-        <br><br>
-        <strong>Matric Number:</strong> 20230204545
-        <br>
-        <strong>Department:</strong> Computer Science Education
-        <br>
-        <strong>Level:</strong> 300 Level
-      </p>
-    </div>
+    <h1>GNF Site</h1>
+    <p id="form-desc">Login to view my profile</p>
+    <input type="email" id="email" placeholder="Email" required>
+    <input type="password" id="password" placeholder="Password" required>
+    <button id="submit-btn">Login</button>
+    <div class="toggle" id="toggle-mode">Don't have an account? Sign up</div>
+    <div class="msg" id="message"></div>
   </div>
-
-  <div class="card">
-    <h2>My Photos</h2>
-    <p>Here's a glimpse of me and some of my moments</p>
-    <div class="gallery">
-      <img src="photo1.jpg.jpeg" alt="GNF Photo 1">
-      <img src="photo2.jpg.jpeg" alt="GNF Photo 2">
-      <img src="photo3.jpg.jpeg" alt="GNF Photo 3">
-    </div>
-  </div>
-</section>
-
-<footer>Made with ❤️ in 2026 | GNF</footer>
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { 
+  getAuth, 
+  signInWithEmailAndPassword, 
+  createUserWithEmailAndPassword,
+  sendEmailVerification 
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAk2qhOydgf_Aqzg0Zw4Cg_8f3280eCEBs",
@@ -138,182 +88,45 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-// Protect this page
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    if (!user.emailVerified) {
-      window.location.href = 'index.html';
-      return;
-    }
-    document.getElementById('user-email').textContent = user.email;
-  } else {
-    window.location.href = 'index.html';
-  }
-});
+let isLogin = true;
+const desc = document.getElementById('form-desc');
+const btn = document.getElementById('submit-btn');
+const toggle = document.getElementById('toggle-mode');
+const msg = document.getElementById('message');
 
-document.getElementById('logout-btn').onclick = async () => {
-  await signOut(auth);
-  window.location.href = 'index.html';
-};
-</script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="GNF - Computer Science Education student at TASUED">
-<title>GNF - Profile</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-<style>
-    * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
-  body {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    line-height: 1.7;
-  }
-  nav {
-    position: sticky;
-    top: 0;
-    background: rgba(0,0,0,0.3);
-    backdrop-filter: blur(10px);
-    padding: 15px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 100;
-  }
-  nav h3 { font-weight:600; }
-  nav button {
-    padding: 8px 20px;
-    background: white;
-    color: #764ba2;
-    border: none;
-    border-radius: 8px;
-    font-weight: 600;
-    cursor: pointer;
-  }
-  nav button:hover { background: #764ba2; color: white; border: 1px solid white; }
-  
-  header {
-    text-align: center;
-    padding: 60px 20px;
-    background: rgba(0,0,0,0.2);
-  }
-  header h1 { font-size:48px; margin-bottom:10px; }
-  
-  section { max-width:900px; margin:40px auto; padding:0 20px; }
-  .card {
-    background: rgba(255,255,255,0.1);
-    padding: 35px;
-    border-radius: 12px;
-    margin-bottom: 30px;
-    backdrop-filter: blur(10px);
-  }
-  h2 { margin-bottom:20px; font-size:32px; }
-  .bio { font-size:16px; line-height:1.8; }
-  .bio strong { color:#ffd700; }
-  
-  .gallery {
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:20px;
-    margin-top:25px;
-  }
-  .gallery img {
-    width:100%;
-    height:250px;
-    object-fit:cover;
-    border-radius:12px;
-    border:2px solid rgba(255,255,255,0.2);
-    transition:transform 0.3s;
-  }
-  .gallery img:hover { transform:scale(1.05); }
-  
-  footer { text-align:center; padding:30px; opacity:0.8; font-size:14px; }
-</style>
-</head>
-<body>
-
-<nav>
-  <h3>Welcome, <span id="user-email"></span></h3>
-  <button id="logout-btn">Logout</button>
-</nav>
-
-<header>
-  <h1>Hey, I'm GNF 👋</h1>
-  <p>300 Level Computer Science Education Student</p>
-</header>
-
-<section>
-  <div class="card">
-    <h2>About Me</h2>
-    <div class="bio">
-      <p>
-        I'm a 300 level student at <strong>Tai Solarin University of Education, Ijebu Ode, Nigeria</strong>, 
-        studying <strong>Computer Science Education</strong>. I'm passionate about tech, teaching, and using 
-        code to solve real problems in education.
-        <br><br>
-        Right now, I'm focused on learning web development, data structures, and how to make learning more 
-        interactive through technology. My goal is to become a skilled software developer and educator who 
-        can bridge the gap between tech and the classroom in Nigeria.
-        <br><br>
-        <strong>Matric Number:</strong> 20230204545
-        <br>
-        <strong>Department:</strong> Computer Science Education
-        <br>
-        <strong>Level:</strong> 300 Level
-      </p>
-    </div>
-  </div>
-
-  <div class="card">
-    <h2>My Photos</h2>
-    <p>Here's a glimpse of me and some of my moments</p>
-    <div class="gallery">
-      <img src="photo1.jpg.jpeg" alt="GNF Photo 1">
-      <img src="photo2.jpg.jpeg" alt="GNF Photo 2">
-      <img src="photo3.jpg.jpeg" alt="GNF Photo 3">
-    </div>
-  </div>
-</section>
-
-<footer>Made with ❤️ in 2026 | GNF</footer>
-
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyAk2qhOydgf_Aqzg0Zw4Cg_8f3280eCEBs",
-  authDomain: "gnf-site.firebaseapp.com",
-  projectId: "gnf-site",
-  storageBucket: "gnf-site.firebasestorage.app",
-  messagingSenderId: "433011079570",
-  appId: "1:433011079570:web:79981578237f0562e5294b",
-  measurementId: "G-W431C4HMND"
+toggle.onclick = () => {
+  isLogin = !isLogin;
+  desc.textContent = isLogin ? 'Login to view my profile' : 'Create account to view my profile';
+  btn.textContent = isLogin ? 'Login' : 'Sign Up';
+  toggle.textContent = isLogin ? "Don't have an account? Sign up" : "Already have an account? Login";
+  msg.textContent = '';
 };
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+btn.onclick = async () => {
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+  msg.textContent = '';
+  msg.className = 'msg';
 
-// Protect this page
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    if (!user.emailVerified) {
-      window.location.href = 'index.html';
-      return;
+  try {
+    if (isLogin) {
+      const userCred = await signInWithEmailAndPassword(auth, email, password);
+      if (!userCred.user.emailVerified) {
+        msg.textContent = 'Please verify your email first';
+        msg.className = 'msg error';
+        return;
+      }
+      window.location.href = 'dashboard.html';
+    } else {
+      const userCred = await createUserWithEmailAndPassword(auth, email, password);
+      await sendEmailVerification(userCred.user);
+      msg.textContent = 'Account created! Check your email to verify';
+      msg.className = 'msg success';
     }
-    document.getElementById('user-email').textContent = user.email;
-  } else {
-    window.location.href = 'index.html';
+  } catch (error) {
+    msg.textContent = error.message;
+    msg.className = 'msg error';
   }
-});
-
-document.getElementById('logout-btn').onclick = async () => {
-  await signOut(auth);
-  window.location.href = 'index.html';
 };
 </script>
 </body>
