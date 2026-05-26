@@ -1,28 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-    <style>
-     button:hover  {
-     background-color: darkgreen;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GNF - My First Site</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Arial, sans-serif;
     }
-a:hover {
-     color: yellow;
-     }
-,</style>
+
+    body {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      line-height: 1.6;
+    }
+
+    header {
+      text-align: center;
+      padding: 60px 20px;
+      background: rgba(0,0,0,0.2);
+    }
+
+    header h1 {
+      font-size: 48px;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 20px;
+      opacity: 0.9;
+    }
+
+    section {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.1);
+      padding: 30px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      backdrop-filter: blur(10px);
+    }
+
+    h2 {
+      margin-bottom: 15px;
+      font-size: 32px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      transition: transform 0.3s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 30px;
+      background: white;
+      color: #764ba2;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      margin-top: 15px;
+      transition: all 0.3s;
+    }
+
+    .btn:hover {
+      background: #764ba2;
+      color: white;
+      border: 2px solid white;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      opacity: 0.8;
+      font-size: 14px;
+    }
+  </style>
 </head>
-<body style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600'); background-size: cover; text-align: center; font-family: georgia, serif; padding: 40px 20px;">
-<h1 style="color: blue; border: 2px dashed black; padding: 10px; margin 20px; background-color: rgba(255, 255, 255, 0.7); display: inline-block; font-size: 30px;">hello! im learning to code</h1>
-<p style="color: black; font-size:18px; margin:25px 0;">This is my first website!</p>
-<!-- 1. Link -->
-<a href="https://www.google.com" style="color: white; font-size: 18px; display: block; margin 15px;">
-click me to google 
-</a>
-<!-- Button with hover effect -->
-<button style="background-color: green; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-size: 16px cursor: pointer; margin: 15px;">
-     click me
-    </button>
-<img src="https://picsum.photos/300/200" alt="random image" style="border-radius: 10px; margin: 25px; display: block; margin-left; auto; margin-right: auto;">
+<body>
+
+  <header>
+    <h1>Hey, I'm GNF 👋</h1>
+    <p>Learning to code and building my first website</p>
+  </header>
+
+  <section>
+    <div class="card">
+      <h2>About Me</h2>
+      <p>
+        I'm just starting out with web development. This is my first website hosted on GitHub Pages. 
+        It's messy now, but I'll make it better every day. Thanks for checking it out!
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>My Photos</h2>
+      <p>Some pics I uploaded to show you around</p>
+      <div class="gallery">
+        <!-- Change these filenames to match what you uploaded -->
+        <img src="photo1.jpg" alt="My photo 1">
+        <img src="photo2.jpg" alt="My photo 2">
+        <img src="photo3.jpg" alt="My photo 3">
+        <img src="photo4.jpg" alt="My photo 4">
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Let's Connect</h2>
+      <p>Want to see more? Check out my GitHub repo.</p>
+      <a href="https://github.com/gnf2509/GNF" class="btn">Visit My GitHub</a>
+    </div>
+  </section>
+
+  <footer>
+    Made with ❤️ in 2026 | GNF
+  </footer>
+
 </body>
 </html>
