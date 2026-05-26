@@ -1,0 +1,2 @@
+# GNF
+GOD NEVER FAIL
