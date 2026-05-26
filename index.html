@@ -115,12 +115,45 @@
       font-weight: 600;
       margin-top: 15px;
       transition: all 0.3s;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
     }
 
     .btn:hover {
       background: #764ba2;
       color: white;
       border: 2px solid white;
+    }
+
+    /* Login form styles */
+    .login-form {
+      max-width: 400px;
+      margin: 20px auto 0;
+    }
+
+    .login-form input {
+      width: 100%;
+      padding: 12px 15px;
+      margin-bottom: 15px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-family: 'Poppins', sans-serif;
+      background: rgba(255,255,255,0.9);
+      color: #333;
+    }
+
+    .login-form input:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px #764ba2;
+    }
+
+    .login-form label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 600;
+      font-size: 14px;
     }
 
     footer {
@@ -136,6 +169,7 @@
   <nav>
     <a href="#about">About</a>
     <a href="#photos">Photos</a>
+    <a href="#login">Login</a>
     <a href="#contact">Contact</a>
   </nav>
 
@@ -165,10 +199,24 @@
       </div>
     </div>
 
+    <div class="card" id="login">
+      <h2>Login</h2>
+      <p>This is a demo login form. It doesn't actually log you in yet.</p>
+      <form class="login-form" onsubmit="alert('This is a demo form. Login not connected yet!'); return false;">
+        <label for="username">Username</label>
+        <input type="text" id="username" placeholder="Enter your username" required>
+        
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter your password" required>
+        
+        <button type="submit" class="btn">Login</button>
+      </form>
+    </div>
+
     <div class="card" id="contact">
       <h2>Let's Connect</h2>
-      <p>Want to see more? Check out my GitHub repo.</p>
-      <a href="https://github.com/gnf2509/GNF" class="btn">Visit My GitHub</a>
+      <p>Want to log in? Click below to go to the login form.</p>
+      <a href="#login" class="btn">Go to Login</a>
     </div>
   </section>
 
